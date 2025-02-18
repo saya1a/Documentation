@@ -9,9 +9,9 @@ To summarize:
 ADD Command: Ideal for downloading files from URLs and adding them to your Docker image.
 
 COPY Command: Used to copy files from your local filesystem into the Docker image.
-
-Q what are the types of different networking in docker? and what is the default network in Docker?
-
+**************************************************************************************************
+Q. What are the types of different networking in docker? and what is the default network in Docker? 
+**************************************************************************************************
 Docker provides several networking types to connect containers to each other and to the external network. The default networking type in Docker is the Bridge network. Here are the main types of networking available in Docker:
 
 Bridge Network:
