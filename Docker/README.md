@@ -39,3 +39,13 @@ Default Networking in Docker:
 The default network type in Docker is the Bridge network. When you create a container without specifying a network, Docker connects the container to the bridge network automatically. This network is created using a virtual Ethernet bridge called docker0, and it allows containers to communicate with each other and with the host network.
 
 These networking options provide flexibility for different use cases, ranging from simple container-to-container communication to complex multi-host networking solutions.
+
+******************************************
+Q. What is multistage build in Dokcerfile?
+******************************************
+
+The concept of a container is inherently designed to be lightweight, optimizing resource usage and ensuring portability. To achieve this lightweight nature, you can utilize techniques like multistage builds in Docker. A multistage build allows you to create your Docker container in multiple stages, enabling you to copy artifacts from one stage to another efficiently.
+
+In a typical application build process, once the application is built, many dependencies are no longer required. Using a multistage build, you can streamline this process. In the initial stages, you can install all necessary build dependencies and compile your application. Once the build is complete, you can discard these dependencies and only retain the essential binaries or executables.
+
+In the final stage, you can create a minimal Docker image by only copying the necessary binaries or executables from the previous stages. For example, if your application requires Java runtime, you can ensure that only the Java runtime is installed in the final image. This approach significantly reduces the image size, making your container more efficient.
