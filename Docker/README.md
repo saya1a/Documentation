@@ -81,6 +81,14 @@ Default Networking in Docker:
 The default network type in Docker is the Bridge network. When you create a container without specifying a network, Docker connects the container to the bridge network automatically. This network is created using a virtual Ethernet bridge called docker0, and it allows containers to communicate with each other and with the host network.
 
 These networking options provide flexibility for different use cases, ranging from simple container-to-container communication to complex multi-host networking solutions.
+*******************
+Q. Can You Modify an Existing Docker Image?
+******************************
+Yes, you can modify an existing Docker image, but since images are immutable, you can't change an existing image directly. 
+Instead, you can create a new image based on the existing one with the required modifications.
+
+You can make changes inside a running container and commit those changes to a new image.
+docker commit my_container my_modified_image. but by changes are not trackable like Dockerfile
 
 ******************************************
 Q. What is multistage build in Dokcerfile?
