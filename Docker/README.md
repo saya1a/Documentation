@@ -153,9 +153,13 @@ Docker provides several restart policies that determine how containers should be
 You can set the restart policies when running a container or defining them in a docker-compose.yml file.
 
 no (default):	The container does not restart automatically.
+
 always:	The container always restarts, even if it was manually stopped.
+
 unless-stopped:	The container restarts unless it was manually stopped.
+
 on-failure:	The container restarts only if it exits with a non-zero exit code (crash).
+
 *******************
 Q. let say you want to start a docker container, it does not start correctly. so how would you troubleshoot it?
 *******************************
