@@ -120,7 +120,8 @@ Run containers with the least amount of privileges needed. Avoid running contain
 
 Mount filesystems as read-only whenever possible to prevent unauthorized changes. You can use the --read-only flag with Docker to enforce this.
 
-Use network segmentation and isolation to limit access to containers. Implement firewall rules to restrict communication between containers and external networks.
+Use network segmentation and isolation to limit access to containers. 
+Implement firewall rules to restrict communication between containers and external networks.
 
 Enable security features like SELinux, AppArmor, and Seccomp to provide an additional layer of protection. These tools can help to restrict the actions that a container can perform.
 
