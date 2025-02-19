@@ -128,6 +128,17 @@ For example, a typical web application might include a web server, a database, a
 By default, Docker Compose creates a private network for your application, allowing the defined services to communicate with each other securely. You can also customize the network settings if needed.
 
 Volumes can be defined to persist data outside of the containers, ensuring data is not lost when containers are stopped or recreated. This is useful for databases, logs, and other persistent data.
+**************
+Q. How would you ensure the dokcer conatiner start automatically when the docker host restarts?
+****************************
+To ensure that a Docker container starts automatically when the host machine restarts, you can use the --restart policy when running the container. 
+Docker provides several restart policies that determine how containers should behave when they exit or when the Docker daemon restarts.
+You can set the restart policies when running a container or defining them in a docker-compose.yml file.
+
+no (default):	The container does not restart automatically.
+always:	The container always restarts, even if it was manually stopped.
+unless-stopped:	The container restarts unless it was manually stopped.
+on-failure:	The container restarts only if it exits with a non-zero exit code (crash).
 
 
 
