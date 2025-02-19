@@ -108,7 +108,7 @@ Distroless images can be used in a similar way to other Docker images. You can p
 
 Distroless images are a great way to keep your container images lightweight and secure, making them ideal for production environments.
 *********************************
-Q. How would you secure your container?
+Q. How would you secure your docker container?
 ***********************
 Securing containers is crucial to ensure that your applications run safely and reliably.
 
@@ -155,6 +155,48 @@ no (default):	The container does not restart automatically.
 always:	The container always restarts, even if it was manually stopped.
 unless-stopped:	The container restarts unless it was manually stopped.
 on-failure:	The container restarts only if it exits with a non-zero exit code (crash).
+*******************
+Q. let say you want to start a docker container, it does not start correctly. so how would you troubleshoot it?
+*******************************
+There could be several reasons why a Docker container did not start correctly. Common issues include the following:
+
+The port is not free to bind to the container.
+
+Environmental variables are not set properly.
+
+Improper volume mounts and permissions.
+
+Network connectivity problems between the containers.
+
+Missing dependencies in the image.
+
+The container stops due to memory issues, such as resource limits causing an OOM (Out of Memory) kill.
+
+To resolve these issues, follow these steps:
+
+Check Container Logs:
+
+Use the command docker logs <container-name or ID> to view the container logs. This helps identify errors related to missing dependencies, incorrect configurations, or crashes.
+
+Check Container Status:
+
+Use docker ps -a to check the status of all containers. If a container exited immediately, check the exit code using docker inspect <container-name or ID> to understand why it failed.
+
+Run Container in Interactive Mode:
+
+Try running the container interactively with docker run -it --rm <image-name> /bin/bash. This allows you to debug the container manually and check for issues within the container environment.
+
+Verify Port Availability:
+
+Ensure that the required ports are free using the command sudo netstat -tnlup | grep <port number>. This helps confirm that no other processes are occupying the ports needed by the container.
+
+By following these steps, you can diagnose and resolve common issues that prevent Docker containers from starting correctly. This approach helps ensure that your containers run smoothly and reliably.
+
+docker events can be a valuable tool for monitoring real-time events and diagnosing issues with your Docker containers. It provides a stream of events related to the Docker daemon, including container start, stop, and restart events, among others. By using docker events, you can gain insights into what is happening with your containers, which can help in diagnosing why a container did not start correctly or why it stopped.
+********
+Health check in dockerfile
+*******
+Docker Health Check: You can define a health check in your Dockerfile or Docker Compose file to periodically check if your application inside the container is running correctly. If the health check fails, Docker can automatically restart the container.
 
 
 
