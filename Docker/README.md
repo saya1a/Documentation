@@ -146,7 +146,7 @@ By default, Docker Compose creates a private network for your application, allow
 
 Volumes can be defined to persist data outside of the containers, ensuring data is not lost when containers are stopped or recreated. This is useful for databases, logs, and other persistent data.
 **************
-Q. How would you ensure the dokcer conatiner start automatically when the docker host restarts?
+Q. How would you ensure the docker conatiner start automatically when the docker host restarts?
 ****************************
 To ensure that a Docker container starts automatically when the host machine restarts, you can use the --restart policy when running the container. 
 Docker provides several restart policies that determine how containers should behave when they exit or when the Docker daemon restarts.
