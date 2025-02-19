@@ -67,7 +67,7 @@ In this mode, a container shares the host's network stack. The container uses th
 
 Overlay Network:
 
-The overlay network is used for multi-host networking and is especially useful for Docker Swarm or Kubernetes environments. It allows containers running on different Docker hosts to communicate securely. This network type creates a distributed network across multiple Docker daemons.
+The overlay network facilitates netwotking between containers across multiple hosts . if you have multiple hosts in a dokcer-swarm cluster this overlay faclitates networking between these containers, I mean multiple hosts and different containers.
 
 MacVLAN Network:
 
