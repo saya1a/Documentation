@@ -31,7 +31,15 @@ VMs require more resources (memory, CPU) as they include the entire operating sy
 They have higher overhead and take longer to start and stop compared to containers.
 VMs have their own virtual network interfaces and can be configured with different network types similar to physical machines.
 Suitable for running multiple, different operating systems, legacy applications, and scenarios where full OS isolation is required.
+************************
+Q. what is docker image and how it is different from docker container?
+***********************************
+The Docker image is a lightweight, standalone, and executable package that encapsulates everything needed to run a piece of software. 
+This includes the application code, runtime, system libraries, dependencies, and configurations. 
+Since Docker images are portable and immutable, they ensure consistency across different environments, from development to production.
 
+A Docker container, on the other hand, is a running instance of a Docker image. When you run a Docker container, you are essentially creating a runtime environment based on the Docker image. 
+This environment is isolated from the host system and other containers, allowing applications to run consistently across different environments.
 ***********************************************************
 Q. what is the difference between ADD and COPY in Dokcerfile?
 ********************************************
