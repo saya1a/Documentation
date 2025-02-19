@@ -127,7 +127,7 @@ Enable security features like SELinux, AppArmor, and Seccomp to provide an addit
 
 Store sensitive information like passwords, API keys, and certificates using Docker secrets or other secrets management tools. Avoid hardcoding sensitive information in your images.
 
-mplement logging and monitoring solutions to track container activity and detect any unusual behavior. Tools like Prometheus, Grafana, and ELK stack can be used for this purpose.
+Implement logging and monitoring solutions to track container activity and detect any unusual behavior. Tools like Prometheus, Grafana, and ELK stack can be used for this purpose.
 
 Use vulnerability scanning tools like Clair, Anchore, or Trivy to scan your images and containers for known vulnerabilities.
 
