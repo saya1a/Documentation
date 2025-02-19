@@ -78,7 +78,7 @@ These networking options provide flexibility for different use cases, ranging fr
 Q. What is multistage build in Dokcerfile?
 ******************************************
 
-Containers are ena to be lightweight applications and it should not have lot of system depencies, optimizing resource usage and ensuring portability. To achieve this lightweight nature, you can utilize techniques like multistage builds in Docker. A multistage build allows you to create your Docker container in multiple stages, enabling you to copy artifacts from one stage to another efficiently.
+Containers are mean to be lightweight applications and it should not have lot of system depencies, optimizing resource usage and ensuring portability. To achieve this lightweight nature, you can utilize techniques like multistage builds in Docker. A multistage build allows you to create your Docker container in multiple stages, enabling you to copy artifacts from one stage to another efficiently.
 
 In a typical application build process, once the application is built, many dependencies are no longer required. Using a multistage build, you can streamline this process. In the initial stages, you can install all necessary build dependencies and compile your application. Once the build is complete, you can discard these dependencies and only retain the essential binaries or executables.
 
@@ -117,3 +117,18 @@ Use vulnerability scanning tools like Clair, Anchore, or Trivy to scan your imag
 Ensure that the container runtime (e.g., Docker Engine) is configured securely. Follow best practices for securing the Docker daemon and restrict access to the Docker socket.
 
 Use multi-stage builds to create minimal images by only including the necessary binaries and dependencies. This reduces the attack surface and improves security.
+
+***************************
+Q. can you explain the purpose of the docker-compose?
+***************************
+Docker Compose is a tool used to define, manage, and run multi-container applications in Docker. Dokcer-compose makes easy to start, stop, and manage the lifecycle of a multi-container application with a single command (docker-compose up and docker-compose down). It orchestrates the startup order and dependencies between services.
+
+For example, a typical web application might include a web server, a database, and a caching service. Each service can be configured with various settings, such as environment variables, exposed ports, volumes, and network configurations. This ensures that all containers are started with the correct settings.
+
+By default, Docker Compose creates a private network for your application, allowing the defined services to communicate with each other securely. You can also customize the network settings if needed.
+
+Volumes can be defined to persist data outside of the containers, ensuring data is not lost when containers are stopped or recreated. This is useful for databases, logs, and other persistent data.
+
+
+
+
