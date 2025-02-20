@@ -28,3 +28,19 @@ continuous deployment is an extension to the continuous delivery. it is a practi
 CD eliminates the need for human intervention or approval in the production deployment process.  if the automated tests pass, the code goes live.
 
 Continuous Deployment is often implemented by organizations that prioritize rapid delivery of new features and bug fixes to end-users. it is common in environments where there is strong focus on continuous improvement and automation.
+***************************
+Q. explain build lifecycle in Jenkins?
+***************************
+Job Configuration: Set up the job, configure SCM, and define build triggers.
+
+Build Execution: Checkout source code, execute build steps, and run tests.
+
+Post-Build Actions: Archive artifacts, deploy the application, and send notifications.
+
+Build Monitoring: Monitor build progress and status.
+
+Build Analysis: Analyze build history, test results, and code coverage.
+
+Build Cleanup: Clean up the workspace and old artifacts.
+*********************************
+Q. 
