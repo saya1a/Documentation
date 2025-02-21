@@ -69,4 +69,47 @@ The syntax is validated before execution, catching syntax errors early.
 Scripted: Scripted was the first and traditional implementation of the pipeline as a code in Jenkins. It was designed as a general-purpose DSL (Domain Specific Language) built with Groovy. 
 They are suitable for more complex pipelines and scenarios where advanced scripting is required.
 Syntax errors are only caught during execution, not beforehand.
+*************************
+Q. How do you handle the build failure or what is the procedure you follow when build failed in Jenkins?
+***************************
+When a Jenkins build fails, I follow a structured debugging process to quickly identify and resolve the issue. My approach includes like..
 
+The first thing I do is check the console logs (Build → Console Output) to find error messages.
+I look for keywords like syntax errors, dependency failures, missing files, or permission issues.
+
+I check which stage failed:
+Build Stage → Compilation errors (Go, Java, Python, etc.).
+Test Stage → Unit test failures.
+SonarQube/Aqua Trivy → Code quality or security scan failures.
+Artifact Upload → Nexus/S3 permission issues.
+Deployment Stage → Kubernetes/EKS issues.
+
+I  Check the Recent Code Changes, If the build was working fine before, I compare the latest commits using: git diff HEAD~1 HEAD
+If a recent commit introduced a bug, I discuss it with the developer or rollback the change.
+
+I Check Jenkins Agent Issues by Verifying the Jenkins Slave/Agent Logs: tail -n 100 /var/log/jenkins/jenkins.log
+If the agent is disconnected, I restart the Jenkins node:
+
+Check Dependencies & Environment Issues
+Check if any new package/library update broke the build
+mvn dependency:tree  # For Java
+go list -m all       # For Golang
+npm list            # For Node.js
+Verify environment variables are set correctly:
+printenv | grep DB_
+
+Check if the Docker container has the correct files:
+I re-run the build with debugging enabled:
+mvn clean install -X  # For Java
+go test -v            # For Golang
+npm run debug         # For Node.js
+
+Notify the Team & Document the Issue
+If the issue is code-related, I notify the developer via Slack/Teams.
+If it's an infrastructure issue, I escalate to the relevant team.
+I document the issue in Confluence or Jira for future reference.
+
+Implement a Fix & Prevent Future Failures
+🔹 If a missing dependency caused the failure, I update the Dockerfile or Jenkinsfile.
+🔹 If tests failed, I work with the team to fix them.
+🔹 If infrastructure was the issue, I add monitoring & alerting (Prometheus, Grafana, ELK).
