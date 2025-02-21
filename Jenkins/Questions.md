@@ -68,5 +68,5 @@ The syntax is validated before execution, catching syntax errors early.
 
 Scripted: Scripted was the first and traditional implementation of the pipeline as a code in Jenkins. It was designed as a general-purpose DSL (Domain Specific Language) built with Groovy. 
 They are suitable for more complex pipelines and scenarios where advanced scripting is required.
-They are suitable for more complex pipelines and scenarios where advanced scripting is required..
-They are suitable for more complex pipelines and scenarios where advanced scripting is required..
+Syntax errors are only caught during execution, not beforehand.
+
