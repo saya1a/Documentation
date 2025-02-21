@@ -78,10 +78,15 @@ The first thing I do is check the console logs (Build → Console Output) to fin
 I look for keywords like syntax errors, dependency failures, missing files, or permission issues.
 
 I check which stage failed:
+
 Build Stage → Compilation errors (Go, Java, Python, etc.).
+
 Test Stage → Unit test failures.
+
 SonarQube/Aqua Trivy → Code quality or security scan failures.
+
 Artifact Upload → Nexus/S3 permission issues.
+
 Deployment Stage → Kubernetes/EKS issues.
 
 I  Check the Recent Code Changes, If the build was working fine before, I compare the latest commits using: git diff HEAD~1 HEAD
@@ -110,6 +115,9 @@ If it's an infrastructure issue, I escalate to the relevant team.
 I document the issue in Confluence or Jira for future reference.
 
 Implement a Fix & Prevent Future Failures
+
 🔹 If a missing dependency caused the failure, I update the Dockerfile or Jenkinsfile.
+
 🔹 If tests failed, I work with the team to fix them.
+
 🔹 If infrastructure was the issue, I add monitoring & alerting (Prometheus, Grafana, ELK).
