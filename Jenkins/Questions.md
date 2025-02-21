@@ -50,3 +50,23 @@ In Jenkins, a shared library is a way to store commonly used code(reusable code)
 Instead of writing the same code again and again in multiple pipelines, you can create a shared library and use it in all the pipelines that need it. This can make your code more organized and easier to maintain.
 
 An organization has several microservices, each with its own codebase and repository. However, the build, test, and deployment steps for these microservices are quite similar. Instead of duplicating the pipeline code across multiple repositories, the organization can use Jenkins shared libraries to centralize and reuse common pipeline logic.
+*********************
+Q. explain the difference between Declararive and scripted pipeline in Jenkins?
+*****************************
+Declarative: Declarative is a more recent and advanced implementation of a pipeline as a code, provide a more straightforward and readable syntax for defining CI/CD pipelines. They are designed to be user-friendly and enforce a structured approach to pipeline definition.
+
+The syntax is more straightforward and easier to understand, making it accessible for users with minimal programming experience.
+
+Uses a pipeline block as the root element.
+
+Declarative Pipelines come with built-in error handling and post-build actions, such as post blocks to define actions like always, success, failure, and unstable.
+
+Uses structured blocks like stages, steps, and environment to organize the pipeline.
+
+The syntax is validated before execution, catching syntax errors early.
+
+
+Scripted: Scripted was the first and traditional implementation of the pipeline as a code in Jenkins. It was designed as a general-purpose DSL (Domain Specific Language) built with Groovy. 
+They are suitable for more complex pipelines and scenarios where advanced scripting is required.
+They are suitable for more complex pipelines and scenarios where advanced scripting is required..
+They are suitable for more complex pipelines and scenarios where advanced scripting is required..
