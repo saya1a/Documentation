@@ -168,3 +168,25 @@ Trigger the Blue-Green switch, either manually or automatically, depending on yo
 Monitor the deployment and verify that the application is functioning correctly in the Green environment.
 
 If issues are detected, roll back the deployment by switching traffic back to the Blue environment
+*******************
+Q. How do you secure your jenkins?
+*********************
+Jenkins gives a few options enabling authentication mechnisims like LDAP, Active Directory, or OAuth, which can be used to secure your jenkins so that only authenticated users are accessing Jenkins. so that we can enable our authnetication mechanism, so that only trusted users are accessing your jenkins instance. access control can also be configured using role based security which basically defines the permissions for your users and groups, so the LDAP user or the AD user or the OAuth users you can further control the permission by making use of your role bases security. 
+Additionally all your Jenkins connection be encrypted using https.
+
+
+
+*********
+Q. How do you use condional logic in a jenkins pipeline?
+***************************
+Using conditional logic in Jenkins pipelines allows you to control the flow of your pipeline based on certain conditions. Both Declarative and Scripted pipelines support conditional logic, but they handle it differently.
+
+Jenkins provides the when directive to conditionally execute stages based on expressions, parameters, or environment variables.
+
+Using script {} Block in Declarative Pipelines
+
+Conditional Logic in Scripted Pipelines
+For more flexibility, use if-else inside a scripted pipeline
+********************
+Q. How do you set up notifications in Jenkins (e.g. email, Slack)
+************************
