@@ -140,3 +140,31 @@ If using Kubernetes, have two namespaces (blue and green).
 If using Docker, run two container instances (blue-app and green-app).
 
 If using AWS, have two EC2 instances with an Elastic Load Balancer (ELB).
+
+Create two identical environments (Blue and Green) with the same infrastructure and configurations
+
+Set up a load balancer or DNS configuration that can direct traffic to either the Blue or Green environment. Initially, all traffic should be directed to the Blue environment
+
+Open Jenkins and create a new job or configure an existing job for your application deployment.
+
+Set up Source Code Management (e.g., Git) and provide the repository URL.
+
+Add build steps for building your application.
+
+Add deployment steps to deploy the application to the Blue environment
+
+In your Jenkins job or deployment script, introduce logic to switch traffic between the Blue and Green environments.
+
+If using a load balancer, update the load balancer configuration to route traffic to the Green environment.
+
+If using DNS, update the DNS records to point to the Green environment
+
+Run the Jenkins job manually or trigger it based on webhook, SCM polling, or other triggers.
+
+Observe the deployment to the Blue environment.
+
+Trigger the Blue-Green switch, either manually or automatically, depending on your implementation
+
+Monitor the deployment and verify that the application is functioning correctly in the Green environment.
+
+If issues are detected, roll back the deployment by switching traffic back to the Blue environment
