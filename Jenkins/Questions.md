@@ -121,3 +121,22 @@ Implement a Fix & Prevent Future Failures
 🔹 If tests failed, I work with the team to fix them.
 
 🔹 If infrastructure was the issue, I add monitoring & alerting (Prometheus, Grafana, ELK).
+*******************************
+Q. Explain the concept of blue green deployment how you can achieve it with jenkins?
+***********************************
+
+Blue-Green Deployment is a zero-downtime deployment strategy where two identical environments (Blue and Green) exist. At any time:
+
+Blue is the live (production) environment.
+
+Green is the new version being tested.
+
+Once the Green version is fully tested and verified, traffic is switched from Blue → Green, making Green the new production environment.
+
+Jenkins can automate Blue-Green Deployment for applications running on Docker, Kubernetes, or EC2-based environments.
+
+If using Kubernetes, have two namespaces (blue and green).
+
+If using Docker, run two container instances (blue-app and green-app).
+
+If using AWS, have two EC2 instances with an Elastic Load Balancer (ELB).
