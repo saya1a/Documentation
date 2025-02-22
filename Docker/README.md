@@ -202,7 +202,28 @@ docker events can be a valuable tool for monitoring real-time events and diagnos
 Health check in dockerfile
 *******
 Docker Health Check: You can define a health check in your Dockerfile or Docker Compose file to periodically check if your application inside the container is running correctly. If the health check fails, Docker can automatically restart the container.
+************************
+Q. What is ARG and ENV in Dokcerfile? 
+**************************
+ARG defines build-time variables that are available only during the image build process. These variables can be set in the Dockerfile or passed as arguments during the build command.
+Example: Customizing the build process based on the environment (e.g., specifying a build version).
+# Dockerfile
+FROM ubuntu:22.04
+ARG VERSION=1.0.0
+RUN echo "Building version $VERSION"
+docker build --build-arg VERSION=2.0.0 -t myapp:2.0.0 .
 
+ENV defines environment variables that are available both during the build process and at runtime. These variables can be used by the application running inside the container
 
+# Dockerfile
+FROM ubuntu:22.04
+ENV DB_HOST=db.example.com
+ENV DB_USER=admin
+ENV DB_PASSWORD=secret
+RUN echo "Database host is $DB_HOST"
+
+ARG: Defines build-time variables, used for customizing the build process.
+
+ENV: Defines environment variables, used for runtime configuration.
 
 
