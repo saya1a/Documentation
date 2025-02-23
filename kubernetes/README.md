@@ -32,5 +32,12 @@ The API server updates the status in etcd.
 
 The Controller Manager continues to monitor the state of the resources and ensures they remain aligned with the desired state specified in the deployment.yml file.
 
+*************
+Q. What is startup probe?
+***************
+We are not using any startup probe because most of our applications are built with the latest tag and start quickly. Startup probes are generally used when there is a need to delay the actual process, which is more common in legacy, monolithic applications. These applications typically bundle a large amount of business logic and configurations, leading to longer initialization times due to configuration loading and processing.
 
+When running such workloads as Kubernetes pods, the challenge arises when Kubernetes starts routing traffic to the pod as soon as it reaches the "Running" state, even if the application inside is not fully ready to accept requests. While a readiness probe can delay traffic by specifying an initial delay, it does not guarantee that the main application inside the container is ready.
+
+To address this uncertainty, startup probes provide an additional buffer period before readiness and liveness probes take effect. By defining an initial delay (e.g., 1-2 minutes) for startup probes, we can ensure that the container has enough time to initialize before Kubernetes considers it ready. Once the startup probe completes successfully, Kubernetes will begin using the liveness and readiness probes as usual, preventing premature traffic routing and improving application stability.
 
