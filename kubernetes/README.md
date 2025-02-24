@@ -1,4 +1,4 @@
-Q. In kubernetes when I run kubectl apply/create -f deployment.yml may I know what activities will hapeend?
+**Q. In kubernetes when I run kubectl apply/create -f deployment.yml may I know what activities will hapeend?**
 *****************************
 When you run kubectl apply -f deployment.yml in Kubernetes, you're instructing Kubernetes to create or update the resources defined in the deployment.yml file.
 
@@ -49,7 +49,7 @@ However, Kubernetes does not allow indefinite restarts. Instead, it implements a
 
 This behavior applies only when the restart policy is set to Always (the default). If the restart policy is set to Never, the pod will not restart, and the CrashLoopBackOff state will not occur.
 ***********
-Q. Which monitoring solution you are used and you setup it or consuming?
+**Q. Which monitoring solution you are used and you setup it or consuming?**
 *****************
 I have used Prometheus and grafana, alert manager with node exporter plugin. The setup is already there, suppose let say some new applications comes are some modifications are needed we do the configuration changes. But the alerts and the SMPTP setings everything slack settings already there. 
 *****
