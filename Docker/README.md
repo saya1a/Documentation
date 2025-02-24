@@ -1,4 +1,4 @@
-Q. What exactly difference between a docker contianer and virtual machine?
+**Q. What exactly difference between a docker contianer and virtual machine?**
 *******************************
 Docker containers and virtual machines (VMs) are both technologies used to run applications in isolated environments, but they have some fundamental differences in how they achieve isolation and resource management.
 
