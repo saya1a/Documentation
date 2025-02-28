@@ -190,6 +190,16 @@ For more flexibility, use if-else inside a scripted pipeline
 ********************
 **Q. How do you set up notifications in Jenkins (e.g. email, Slack)**
 ************************
+To set up email notifications in Jenkins, you first need to install the Email Extension Plugin (email-ext) and configure SMTP settings under Manage Jenkins → Configure System.
+
+Depending on your email provider, you need to specify the SMTP server, port, and authentication details. For example, if using Gmail, the SMTP server is smtp.gmail.com, with port 465 (SSL) or 587 (TLS), requiring an app password for authentication. Once configured, you can add email notifications to your Jenkinsfile. A basic implementation involves using the emailext function inside the post block to send notifications upon build success or failure.
+
+For example, if a build fails, an email can be sent to the team with details such as the job name, build number, and a link to the console logs.
+
+Advanced configurations allow attaching build logs, sending emails only when specific stages fail, or using predefined email lists like $DEFAULT_RECIPIENTS to avoid hardcoding addresses.
+
+Additionally, you can conditionally send emails for deployment failures by wrapping deployment steps inside a try-catch block. By integrating email notifications effectively, teams stay informed about critical build and deployment statuses without unnecessary spam.
+
 **Q. How do you optimize the Jenkins pipeline?**
 
 Optimizing a Jenkins pipeline is crucial for improving build speed, resource utilization, and reliability.
@@ -240,7 +250,7 @@ Run vulnerability scanning with tools like Trivy, Aqua Security, or Snyk before 
 
 Use docker-compose.yml to standardize environment variables and dependencies for local development. This ensures that local development mirrors other environments, promoting consistency and reducing the chances of discrepancies.
 
-"Instead of hardcoding configurations in the Docker image, use ConfigMaps and Secrets. This approach keeps images consistent while allowing for environment-specific configurations. It promotes flexibility and security by separating configuration data from the application code and ensuring that sensitive information is managed securely.
+Instead of hardcoding configurations in the Docker image, use ConfigMaps and Secrets. This approach keeps images consistent while allowing for environment-specific configurations. It promotes flexibility and security by separating configuration data from the application code and ensuring that sensitive information is managed securely.
 
 Ensure that only tested images are promoted to higher environments by using tools like Jenkins or GitHub Actions. These tools can help automate the promotion process, ensuring that an image is promoted across environments only after it has successfully passed all tests. This practice enhances reliability and consistency by guaranteeing that only stable and verified images move forward in the deployment pipeline.
 
