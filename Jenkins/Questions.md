@@ -1,8 +1,8 @@
-Q. what is Poll SCM in Jenkins?
+**1. what is Poll SCM in Jenkins?**
 ***********************************
 In Jenkins, Poll SCM means that Jenkins periodically checks the version control system (VCS) for any changes. When changes are detected, it triggers a build automatically. This feature allows you to schedule how often Jenkins checks for updates, making it an integral part of continuous integration (CI) processes. By configuring Poll SCM, you can ensure that your codebase is frequently checked for updates, leading to timely builds, automated responses to code changes, and seamless integration with scheduled tasks.
 ******************
-Q. What are the types of build triggers in Jenkins?
+**Q. What are the types of build triggers in Jenkins?**
 ********************************
 In Jenkins, build triggers are mechanisms that initiate the execution of a job. They help automate the build process by defining specific conditions under which a build should start.
 1. Mannual trigger:  Users can manually start a build by clicking the "Build Now" button in the Jenkins web interface.
@@ -13,7 +13,7 @@ In Jenkins, build triggers are mechanisms that initiate the execution of a job. 
 6. Trigger build Remotely: You can trigger Jenkins builds remotely via an HTTP URL. Enable "Trigger builds remotely" and provide a unique token.
 7. Parameterized Builds: Allows you to trigger builds with specific parameters.
 ***************************************
-Q. What is continuous delivery and continuous deployment?
+**Q. What is continuous delivery and continuous deployment?**
 *****************************
 Continuous Delivery is software development practice that focuses on automating the process of delivering code changes to production-like environments after passing through entire pipeline of build, test and deployment.
 
@@ -29,7 +29,7 @@ CD eliminates the need for human intervention or approval in the production depl
 
 Continuous Deployment is often implemented by organizations that prioritize rapid delivery of new features and bug fixes to end-users. it is common in environments where there is strong focus on continuous improvement and automation.
 ***************************
-Q. explain build lifecycle in Jenkins?
+**Q. explain build lifecycle in Jenkins?**
 ***************************
 Job Configuration: Set up the job, configure SCM, and define build triggers.
 
@@ -43,7 +43,7 @@ Build Analysis: Analyze build history, test results, and code coverage.
 
 Build Cleanup: Clean up the workspace and old artifacts.
 *********************************
-Q. What are shared libraries in Jenkins?
+**Q. What are shared libraries in Jenkins?**
 **********************************
 In Jenkins, a shared library is a way to store commonly used code(reusable code), such as scripts or functions, that can be used by different Jenkins pipelines.
 
@@ -51,7 +51,7 @@ Instead of writing the same code again and again in multiple pipelines, you can 
 
 An organization has several microservices, each with its own codebase and repository. However, the build, test, and deployment steps for these microservices are quite similar. Instead of duplicating the pipeline code across multiple repositories, the organization can use Jenkins shared libraries to centralize and reuse common pipeline logic.
 *********************
-Q. explain the difference between Declararive and scripted pipeline in Jenkins?
+**Q. explain the difference between Declararive and scripted pipeline in Jenkins?**
 *****************************
 Declarative: Declarative is a more recent and advanced implementation of a pipeline as a code, provide a more straightforward and readable syntax for defining CI/CD pipelines. They are designed to be user-friendly and enforce a structured approach to pipeline definition.
 
@@ -70,7 +70,7 @@ Scripted: Scripted was the first and traditional implementation of the pipeline 
 They are suitable for more complex pipelines and scenarios where advanced scripting is required.
 Syntax errors are only caught during execution, not beforehand.
 *************************
-Q. How do you handle the build failure or what is the procedure you follow when build failed in Jenkins?
+**Q. How do you handle the build failure or what is the procedure you follow when build failed in Jenkins?**
 ***************************
 When a Jenkins build fails, I follow a structured debugging process to quickly identify and resolve the issue. My approach includes like..
 
@@ -122,7 +122,7 @@ Implement a Fix & Prevent Future Failures
 
 🔹 If infrastructure was the issue, I add monitoring & alerting (Prometheus, Grafana, ELK).
 *******************************
-Q. Explain the concept of blue green deployment how you can achieve it with jenkins?
+**Q. Explain the concept of blue green deployment how you can achieve it with jenkins?**
 ***********************************
 
 Blue-Green Deployment is a zero-downtime deployment strategy where two identical environments (Blue and Green) exist. At any time:
@@ -169,7 +169,7 @@ Monitor the deployment and verify that the application is functioning correctly 
 
 If issues are detected, roll back the deployment by switching traffic back to the Blue environment
 *******************
-Q. How do you secure your jenkins?
+**Q. How do you secure your jenkins?**
 *********************
 Jenkins gives a few options enabling authentication mechnisims like LDAP, Active Directory, or OAuth, which can be used to secure your jenkins so that only authenticated users are accessing Jenkins. so that we can enable our authnetication mechanism, so that only trusted users are accessing your jenkins instance. access control can also be configured using role based security which basically defines the permissions for your users and groups, so the LDAP user or the AD user or the OAuth users you can further control the permission by making use of your role bases security. 
 Additionally all your Jenkins connection be encrypted using https.
@@ -177,7 +177,7 @@ Additionally all your Jenkins connection be encrypted using https.
 
 
 *********
-Q. How do you use condional logic in a jenkins pipeline?
+**Q. How do you use condional logic in a jenkins pipeline?**
 ***************************
 Using conditional logic in Jenkins pipelines allows you to control the flow of your pipeline based on certain conditions. Both Declarative and Scripted pipelines support conditional logic, but they handle it differently.
 
@@ -224,6 +224,27 @@ Jenkins frequently checking for Git changes can significantly increase the serve
 
 Implement the smart test execution, while running all tests every time slow down the pieline. to avoid run only impacted tests using tools like pytest, TestNG, or Gradle.
 
+**Q. How you can ensure the dokcer image consistence and reliable across the environments?**
+
+Ensuring Docker image consistency and reliability across different environments (Dev, SIT, QA, Prod) is crucial to maintaining stability and avoiding unexpected failures.
+
+Use Multi-Stage Builds in Dockerfile to create lightweight, optimized, and consistent images by separating the build and runtime stages. This approach ensures that all environments use the same built binary, promoting consistency and reliability.
+
+Push images to a central repository such as AWS ECR, Nexus, JFrog Artifactory, or Docker Hub to maintain consistency across environments. By ensuring all environments pull the same versioned image, you can avoid local variations and ensure uniformity in deployments.
+
+Avoid using latest tags, as they can lead to unpredictable behavior when environments pull different versions of the image. Instead, use semantic versioning or commit SHA-based tags to ensure every environment uses the exact same image version. This practice promotes consistency and reliability in deployments.
+
+Run vulnerability scanning with Trivy, Aqua Security, or Snyk before pushing images. Prevents security vulnerabilities from propagating across environments.
+
+Run vulnerability scanning with tools like Trivy, Aqua Security, or Snyk before pushing images. This practice helps to prevent security vulnerabilities from propagating across environments, ensuring a more secure deployment process.
+
+Use docker-compose.yml to standardize environment variables and dependencies for local development. This ensures that local development mirrors other environments, promoting consistency and reducing the chances of discrepancies.
+
+"Instead of hardcoding configurations in the Docker image, use ConfigMaps and Secrets. This approach keeps images consistent while allowing for environment-specific configurations. It promotes flexibility and security by separating configuration data from the application code and ensuring that sensitive information is managed securely.
+
+Ensure that only tested images are promoted to higher environments by using tools like Jenkins or GitHub Actions. These tools can help automate the promotion process, ensuring that an image is promoted across environments only after it has successfully passed all tests. This practice enhances reliability and consistency by guaranteeing that only stable and verified images move forward in the deployment pipeline.
+
+Use Docker Content Trust (DCT) to sign and verify images, ensuring they haven’t been tampered with. This practice prevents unauthorized or modified images from being deployed, enhancing the security and integrity of your deployments.
 
 
 
