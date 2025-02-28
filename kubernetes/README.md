@@ -35,7 +35,7 @@ The Controller Manager continues to monitor the state of the resources and ensur
 *************
 **Q. What is startup probe?**
 ***************
-We are not using any startup probe because most of our applications are built with the latest tag and start quickly. Startup probes are generally used when there is a need to delay the actual process, which is more common in legacy, monolithic applications. These applications typically bundle a large amount of business logic and configurations, leading to longer initialization times due to configuration loading and processing.
+We are not using any startup probe because most of our applications are built with the latest tag and start quickly. Startup probes are generally used when there is a **need to delay the actual process**, which is more common in legacy, monolithic applications. These applications typically bundle a large amount of business logic and configurations, leading to longer initialization times due to configuration loading and processing.
 
 When running such workloads as Kubernetes pods, the challenge arises when Kubernetes starts routing traffic to the pod as soon as it reaches the "Running" state, even if the application inside is not fully ready to accept requests. While a readiness probe can delay traffic by specifying an initial delay, it does not guarantee that the main application inside the container is ready.
 
