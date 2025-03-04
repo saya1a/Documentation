@@ -94,7 +94,7 @@ kubectl rollout restart deployment prometheus -n monitoring  # If running in Kub
 
 Finally, I check if Prometheus is successfully scraping the target via the Prometheus UI (/targets endpoint) or by querying the metrics explorer.
 
-**Q. Explain how do you implement the pod disruption budget in kubernets?**
+****Q. Explain how do you implement the pod disruption budget in kubernets?****
 
 A Pod Disruption Budget (PDB) ensures that a minimum number or percentage of pods remain available during voluntary disruptions, such as node maintenance, rolling updates, or cluster autoscaling. This helps in maintaining application availability and preventing downtime.
 
@@ -105,7 +105,7 @@ We apply the PDB using kubectl apply -f <pdb-file>.yaml and verify it using kube
 
 PDBs are crucial in high-availability (HA) environments, ensuring applications remain accessible during maintenance activities and rolling updates, particularly for stateful applications like databases. By implementing a PDB, we enhance the resilience of Kubernetes workloads, maintaining service availability while allowing controlled disruptions. 
 
-**Q. can you explain how can you log aggregation in kubernetes?**
+****Q. can you explain how can you log aggregation in kubernetes?****
 
 Log aggregation in Kubernetes is the process of collecting, storing, and analyzing logs from multiple containers, pods, and nodes in a centralized system. Since Kubernetes applications run as distributed microservices across multiple nodes, managing logs efficiently is critical for monitoring, troubleshooting, and auditing.
 
