@@ -133,4 +133,18 @@ Kibana provides visualization and analysis.
 Elasticsearch + Logstash + Kibana (ELK Stack):
 Logstash is used instead of Fluentd for more advanced log processing.
 
+**Q. what liveness and readiness probes in Kubernetes?**
 
+In Kubernetes, liveness and readiness probes are used to monitor and manage the health of containerized applications. These probes ensure that the application remains reliable even during container failures. By using these probes, Kubernetes can prevent traffic from being sent to unhealthy containers that are not ready to serve, thereby maintaining the overall reliability and stability of the application.
+
+Liveness probes in Kubernetes check the specified endpoint's health status by targeting the defined health path and port. If the response is 200, the container is marked as healthy. Otherwise, Kubernetes restarts the container helping it recover automatically. The first check occurs 10 seconds after the container starts, as specified by initialDelaySeconds, and subsequent checks occur every 5 seconds, as defined by periodSeconds.
+
+Imagine a Java-based microservice running inside a Kubernetes pod. Due to a memory leak or deadlock, the application becomes unresponsive but does not crash. The process is still running, but it no longer serves requests.
+
+Use Case: Prevents unresponsive applications from consuming resources indefinitely.
+
+Suppose a Node.js application connects to a database before serving traffic. When the pod starts, the database connection takes 30 seconds to establish. If the application receives requests before the connection is ready, users will see errors.
+
+A readiness probe ensures the application is ready to handle traffic. Until the probe passes, Kubernetes does not send traffic to the pod.
+
+Use Case: Ensures applications receive traffic only when fully ready.
