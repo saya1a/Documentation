@@ -93,7 +93,9 @@ docker restart prometheus  # If running in Docker
 kubectl rollout restart deployment prometheus -n monitoring  # If running in Kubernetes
 
 Finally, I check if Prometheus is successfully scraping the target via the Prometheus UI (/targets endpoint) or by querying the metrics explorer.
+
 **Q. Explain how do you implement the pod disruption budget in kubernets?**
+
 A Pod Disruption Budget (PDB) ensures that a minimum number or percentage of pods remain available during voluntary disruptions, such as node maintenance, rolling updates, or cluster autoscaling. This helps in maintaining application availability and preventing downtime.
 
 To implement a PDB, we create a PodDisruptionBudget resource, specifying either minAvailable (minimum pods that must stay available) or maxUnavailable (maximum pods that can be disrupted) along with a label selector to target specific pods. 
