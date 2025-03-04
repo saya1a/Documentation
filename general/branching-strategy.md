@@ -76,4 +76,32 @@ Implemented user login/logout functionality
 Integrated with AWS Cognito for authentication
 Unit tests included
 
+Q. What automated tests are performed in the QA environment to ensure code quality and stability?
+
+**Unit Testing**:  Validates individual functions and components. tools JUnit(Java), PyTest(Python), Jest(JavaScript), Go test (Go). Ensures basic functionality is working as expected.
+
+**Integration Testing**: Verifies that multiple services/modules work together. Postman, RestAssured, Selenium, TestNG. A Go microservice making an API call to another microservice. Ensures APIs, databases, and microservices integrate correctly.
+
+**Functional Testing**: Ensures the application meets business requirements.Selenium (UI), Cucumber (BDD), Cypress (Web). Validates real-world use cases.
+
+**Pefrormance Testing**: Tests scalability, load, and response time. JMeter, Gatling, Locust. Ensures the application performs under high traffic.
+
+**Security Testing**: dentifies vulnerabilities and risks. OWASP ZAP, SonarQube, Aqua Trivy, Snyk. Ensures code is secure and follows best security practices.
+
+**Smoke testing**:  Checks basic application stability before deeper testing. 
+
+Verify application homepage loads successfully.
+Ensure APIs respond with a 200 status.
+
+**Regression Testing**: Ensures new changes don’t break existing functionality. Prevents unexpected breakages in production.
+
+**API testing**: nsures API functionality, response time, and reliability. Postman, REST Assured, Karate. Ensures microservices communicate properly.
+
+**Database Testing**: Ensures data integrity, consistency, and correctness.SQLUnit, DBUnit, pgTAP. Ensures data is stored and retrieved correctly.
+
+**Canary Testing** (Partial Deployment in QA): Deploys a new version to a subset of users before full deployment.
+
+
+
+
 
