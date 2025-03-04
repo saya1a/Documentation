@@ -101,7 +101,105 @@ Ensure APIs respond with a 200 status.
 
 **Canary Testing** (Partial Deployment in QA): Deploys a new version to a subset of users before full deployment.
 
+**Q. How is the code tagged as a release version, and what steps follow before it is deployed to the production environment?** 
 
+Once the code has successfully passed all automated tests (unit, integration, smoke, security, and performance) in the QA environment, it is marked for release.
+
+We use Semantic Versioning (SemVer): MAJOR.MINOR.PATCH (e.g., v1.2.3).
+Example: A new release fixing a minor bug in v1.2.3 is tagged as v1.2.4.
+
+A new release branch is created from the development branch.
+The release branch undergoes final testing.
+Once validated, a Git tag is assigned to mark the release.
+
+ Example - Git Commands for Tagging & Pushing a Release
+
+
+git checkout release-branch
+git tag -a v1.2.4 -m "Release version 1.2.4"
+git push origin v1.2.4
+
+After tagging, the release branch is merged into the main branch. This triggers:
+✅ Final security & compliance checks.
+✅ Container image build & push to a registry (e.g., AWS ECR, Docker Hub).
+✅ Artifact storage in Nexus/S3 for tracking releases.
+
+docker build -t my-app:v1.2.4 .
+docker tag my-app:v1.2.4 my-ecr-repo/my-app:v1.2.4
+docker push my-ecr-repo/my-app:v1.2.4
+
+Once the code is approved for production, it follows a Blue-Green Deployment or Rolling Update strategy to minimize downtime.
+
+New (Green) environment is spun up with v1.2.4.
+If stable, traffic is switched from Blue (old version) to Green.
+If issues arise, rollback to Blue.
+
+Once deployed, real-time monitoring is activated to track:
+✅ Application health (using Prometheus, Grafana, ELK Stack).
+✅ Logs for errors (using Fluentd, Loki).
+✅ Alerting for failures.
+
+kubectl rollout undo deployment my-app
+
+**Q. What monitoring practices are in place post-production deployment to track application behavior and performance?**
+
+Once a new release is deployed to production, continuous monitoring and alerting are crucial to ensure stability, performance, and security. 
+
+Metrics Collection with Prometheus & Grafana
+
+Collects CPU, Memory, Network, and Disk I/O metrics from application pods, EC2 instances, and Kubernetes clusters.
+Visualized in Grafana dashboards for real-time tracking.
+
+- alert: HighCPUUsage
+  expr: avg(rate(container_cpu_usage_seconds_total[5m])) > 80
+  for: 2m
+  labels:
+    severity: warning
+  annotations:
+    summary: "High CPU Usage Alert"
+
+
+Centralized Logging with ELK Stack (Elasticsearch, Logstash, Kibana)
+
+Logstash collects logs from applications, Kubernetes, and AWS services.
+Elasticsearch stores and indexes logs.
+Kibana provides real-time visual analysis of logs.
+
+Fluentd / Loki for Lightweight Log Collection
+
+Captures Kubernetes pod logs and forwards them to Loki/Grafana for easy querying.
+
+Distributed Tracing for Debugging
+✔ Jaeger & OpenTelemetry for End-to-End Tracing
+
+Traces requests from frontend → API → database to identify slow transactions.
+Helps debug latency issues and database bottlenecks.
+✔ Example Trace Visualization
+
+Service A → API Gateway → Microservice B → Database Query
+
+Proactive Security & Compliance Monitoring
+✔ AWS GuardDuty for Threat Detection
+
+Identifies suspicious activity like unusual API calls, unauthorized access, or malware.
+✔ Aqua Security / Trivy for Container Vulnerability Scanning
+
+Scans Docker images before deployment and flags security risks.
+✔ Falco for Kubernetes Runtime Security.
+
+Proactive Security & Compliance Monitoring
+✔ AWS GuardDuty for Threat Detection
+
+Identifies suspicious activity like unusual API calls, unauthorized access, or malware.
+✔ Aqua Security / Trivy for Container Vulnerability Scanning
+
+Scans Docker images before deployment and flags security risks.
+✔ Falco for Kubernetes Runtime Security
+
+Automated Rollback Using Jenkins & Kubernetes
+
+If an issue is detected post-deployment, an automated rollback is triggered.
+Example Kubernetes rollback command
 
 
 
