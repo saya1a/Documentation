@@ -43,7 +43,7 @@ To address this uncertainty, startup probes provide an additional buffer period 
 ****
 **Q. what is "CrsahLoopBackOff" error in Kubernetes?**
 ******
-The CrashLoopBackOff error occurs in various scenarios, one of the most common being when a non-existent image is referenced in the pod specification. This can happen if the image is missing from the public or private image repository, leading to repeated pod restarts. Each time the pod attempts to pull the image, it fails and enters a restart cycle.
+The CrashLoopBackOff error occurs in various scenarios, one of the most common being when a **non-existent image** is referenced in the pod specification. This can happen if the image is missing from the public or private image repository, leading to repeated pod restarts. Each time the pod attempts to pull the image, it fails and enters a restart cycle.
 
 However, Kubernetes does not allow indefinite restarts. Instead, it implements an exponential backoff strategy to manage repeated failures. Initially, if a pod fails, Kubernetes waits 10 seconds before retrying. If it fails again, the wait time increases to 20 seconds, then 40 seconds, and continues exponentially. If the pod remains in a failing state beyond a certain threshold, Kubernetes marks it as CrashLoopBackOff, preventing further restarts.
 
@@ -96,9 +96,9 @@ Finally, I check if Prometheus is successfully scraping the target via the Prome
 
 ****Q. Explain how do you implement the pod disruption budget in kubernets?****
 
-A Pod Disruption Budget (PDB) ensures that a minimum number or percentage of pods remain available during voluntary disruptions, such as node maintenance, rolling updates, or cluster autoscaling. This helps in maintaining application availability and preventing downtime.
+A Pod Disruption Budget (PDB) ensures that a minimum number or percentage of pods remain available during **voluntary disruptions**, such as node maintenance, rolling updates, or cluster autoscaling. This helps in maintaining application availability and preventing downtime.
 
-To implement a PDB, we create a PodDisruptionBudget resource, specifying either minAvailable (minimum pods that must stay available) or maxUnavailable (maximum pods that can be disrupted) along with a label selector to target specific pods. 
+To implement a PDB, we create a PodDisruptionBudget resource, specifying either **minAvailable** (minimum pods that must stay available) or **maxUnavailable** (maximum pods that can be disrupted) along with a label selector to target specific pods. 
 
 For example, a PDB with minAvailable: 1 ensures that at least one pod is always running. 
 We apply the PDB using kubectl apply -f <pdb-file>.yaml and verify it using kubectl get pdb.
@@ -107,7 +107,7 @@ PDBs are crucial in high-availability (HA) environments, ensuring applications r
 
 ****Q. can you explain how can you log aggregation in kubernetes?****
 
-Log aggregation in Kubernetes is the process of collecting, storing, and analyzing logs from multiple containers, pods, and nodes in a centralized system. Since Kubernetes applications run as distributed microservices across multiple nodes, managing logs efficiently is critical for monitoring, troubleshooting, and auditing.
+Log aggregation in Kubernetes is the process of **collecting, storing, and analyzing logs** from multiple containers, pods, and nodes in a centralized system. Since Kubernetes applications run as distributed microservices across multiple nodes, managing logs efficiently is critical for monitoring, troubleshooting, and auditing.
 
 The need of log aggregation is as the pod is ephemeral nature, since the pods are dynamic and can restart or move between nodes, their logs are not persistent.
 also the Applications generates logs inside containers, kubernetes itself logs events, and nodes also generates system logs. instead of manually accessing logs on each node, aggregation allows us to monitor everything in a single place.
