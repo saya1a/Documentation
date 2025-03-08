@@ -54,8 +54,11 @@ If all tests pass, the feature is included in a release branch and promoted to p
 Before merging, the feature branch must be synchronized with the latest changes in the development branch to prevent conflicts.
 
 git checkout development
+
 git pull origin development  # Ensure the latest code is fetched
+
 git checkout feature/feature-name
+
 git merge development  # Merge latest changes into the feature branch.
 
 This minimizes merge conflicts and ensures the feature is built on the latest development code.
