@@ -96,7 +96,7 @@ Implemented user login/logout functionality
 Integrated with AWS Cognito for authentication
 Unit tests included
 
-Q. What automated tests are performed in the QA environment to ensure code quality and stability?
+**Q. What automated tests are performed in the QA environment to ensure code quality and stability?**
 
 **Unit Testing**:  Validates individual functions and components. tools JUnit(Java), PyTest(Python), Jest(JavaScript), Go test (Go). Ensures basic functionality is working as expected.
 
