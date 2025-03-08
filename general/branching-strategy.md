@@ -61,11 +61,17 @@ git merge development  # Merge latest changes into the feature branch.
 This minimizes merge conflicts and ensures the feature is built on the latest development code.
 
 A Pull Request (PR) is raised to merge the feature branch into the development branch.
+
 Team members review the code for:
+
 ✅ Code quality and best practices
+
 ✅ Security vulnerabilities
+
 ✅ Performance issues
+
 ✅ Adherence to business logic and requirements
+
 
 Example PR title & description:
 🚀 PR Title: Feature: Implement User Authentication
@@ -120,8 +126,11 @@ git tag -a v1.2.4 -m "Release version 1.2.4"
 git push origin v1.2.4
 
 After tagging, the release branch is merged into the main branch. This triggers:
+
 ✅ Final security & compliance checks.
+
 ✅ Container image build & push to a registry (e.g., AWS ECR, Docker Hub).
+
 ✅ Artifact storage in Nexus/S3 for tracking releases.
 
 docker build -t my-app:v1.2.4 .
@@ -135,8 +144,11 @@ If stable, traffic is switched from Blue (old version) to Green.
 If issues arise, rollback to Blue.
 
 Once deployed, real-time monitoring is activated to track:
+
 ✅ Application health (using Prometheus, Grafana, ELK Stack).
+
 ✅ Logs for errors (using Fluentd, Loki).
+
 ✅ Alerting for failures.
 
 kubectl rollout undo deployment my-app
