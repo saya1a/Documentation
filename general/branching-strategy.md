@@ -15,6 +15,7 @@ Developers follow a structured feature branch workflow to work on new features o
 Developers pull the latest code from the development branch to ensure they are working with the most up-to-date version. 
 
 git checkout development
+
 git pull origin development
 
 Create a new feature branch from the development branch
@@ -22,9 +23,11 @@ Create a new feature branch from the development branch
 git checkout -b feature/new-feature-name
 
 Developers write code, make changes, and test locally.
+
 After implementing the required changes, they stage and commit them
 
 git add .
+
 git commit -m "Implemented new feature XYZ"
 
 Push the feature branch to the remote repository
@@ -32,21 +35,27 @@ Push the feature branch to the remote repository
 git push origin feature/new-feature-name
 
 Once development is complete, a Pull Request (PR) is raised to merge the feature branch into the development branch.
+
 The PR undergoes code reviews, where peers and senior developers provide feedback.
+
 If necessary, changes are made, and the PR is updated accordingly
 
 After approval, the feature branch is merged into development
 
 git checkout development
+
 git merge feature/new-feature-name
+
 git push origin development
 
 The feature branch can be deleted after merging
 
 git branch -d feature/new-feature-name
+
 git push origin --delete feature/new-feature-name
 
 The merged code is automatically tested in the QA environment using CI/CD pipelines.
+
 If all tests pass, the feature is included in a release branch and promoted to production.
 
 **Q. What steps are taken before a feature branch is merged back into the development branch?**
@@ -77,7 +86,9 @@ Team members review the code for:
 
 
 Example PR title & description:
+
 🚀 PR Title: Feature: Implement User Authentication
+
 📌 Description:
 
 Added JWT-based authentication
@@ -100,6 +111,7 @@ Q. What automated tests are performed in the QA environment to ensure code quali
 **Smoke testing**:  Checks basic application stability before deeper testing. 
 
 Verify application homepage loads successfully.
+
 Ensure APIs respond with a 200 status.
 
 **Regression Testing**: Ensures new changes don’t break existing functionality. Prevents unexpected breakages in production.
@@ -115,17 +127,22 @@ Ensure APIs respond with a 200 status.
 Once the code has successfully passed all automated tests (unit, integration, smoke, security, and performance) in the QA environment, it is marked for release.
 
 We use Semantic Versioning (SemVer): MAJOR.MINOR.PATCH (e.g., v1.2.3).
+
 Example: A new release fixing a minor bug in v1.2.3 is tagged as v1.2.4.
 
 A new release branch is created from the development branch.
+
 The release branch undergoes final testing.
+
 Once validated, a Git tag is assigned to mark the release.
 
  Example - Git Commands for Tagging & Pushing a Release
 
 
 git checkout release-branch
+
 git tag -a v1.2.4 -m "Release version 1.2.4"
+
 git push origin v1.2.4
 
 After tagging, the release branch is merged into the main branch. This triggers:
@@ -137,13 +154,17 @@ After tagging, the release branch is merged into the main branch. This triggers:
 ✅ Artifact storage in Nexus/S3 for tracking releases.
 
 docker build -t my-app:v1.2.4 .
+
 docker tag my-app:v1.2.4 my-ecr-repo/my-app:v1.2.4
+
 docker push my-ecr-repo/my-app:v1.2.4
 
 Once the code is approved for production, it follows a Blue-Green Deployment or Rolling Update strategy to minimize downtime.
 
 New (Green) environment is spun up with v1.2.4.
+
 If stable, traffic is switched from Blue (old version) to Green.
+
 If issues arise, rollback to Blue.
 
 Once deployed, real-time monitoring is activated to track:
@@ -163,6 +184,7 @@ Once a new release is deployed to production, continuous monitoring and alerting
 Metrics Collection with Prometheus & Grafana
 
 Collects CPU, Memory, Network, and Disk I/O metrics from application pods, EC2 instances, and Kubernetes clusters.
+
 Visualized in Grafana dashboards for real-time tracking.
 
 - alert: HighCPUUsage
