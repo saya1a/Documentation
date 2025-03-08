@@ -166,18 +166,26 @@ Collects CPU, Memory, Network, and Disk I/O metrics from application pods, EC2 i
 Visualized in Grafana dashboards for real-time tracking.
 
 - alert: HighCPUUsage
+  
   expr: avg(rate(container_cpu_usage_seconds_total[5m])) > 80
+  
   for: 2m
+  
   labels:
+  
     severity: warning
+  
   annotations:
+  
     summary: "High CPU Usage Alert"
 
 
 Centralized Logging with ELK Stack (Elasticsearch, Logstash, Kibana)
 
 Logstash collects logs from applications, Kubernetes, and AWS services.
+
 Elasticsearch stores and indexes logs.
+
 Kibana provides real-time visual analysis of logs.
 
 Fluentd / Loki for Lightweight Log Collection
@@ -185,30 +193,39 @@ Fluentd / Loki for Lightweight Log Collection
 Captures Kubernetes pod logs and forwards them to Loki/Grafana for easy querying.
 
 Distributed Tracing for Debugging
+
 ✔ Jaeger & OpenTelemetry for End-to-End Tracing
 
 Traces requests from frontend → API → database to identify slow transactions.
+
 Helps debug latency issues and database bottlenecks.
+
 ✔ Example Trace Visualization
 
 Service A → API Gateway → Microservice B → Database Query
 
 Proactive Security & Compliance Monitoring
+
 ✔ AWS GuardDuty for Threat Detection
 
 Identifies suspicious activity like unusual API calls, unauthorized access, or malware.
+
 ✔ Aqua Security / Trivy for Container Vulnerability Scanning
 
 Scans Docker images before deployment and flags security risks.
+
 ✔ Falco for Kubernetes Runtime Security.
 
-Proactive Security & Compliance Monitoring
+Proactive Security & Compliance Monitoring.
+
 ✔ AWS GuardDuty for Threat Detection
 
 Identifies suspicious activity like unusual API calls, unauthorized access, or malware.
+
 ✔ Aqua Security / Trivy for Container Vulnerability Scanning
 
 Scans Docker images before deployment and flags security risks.
+
 ✔ Falco for Kubernetes Runtime Security
 
 Automated Rollback Using Jenkins & Kubernetes
