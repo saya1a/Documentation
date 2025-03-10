@@ -148,3 +148,21 @@ Suppose a Node.js application connects to a database before serving traffic. Whe
 A readiness probe ensures the application is ready to handle traffic. Until the probe passes, Kubernetes does not send traffic to the pod.
 
 Use Case: Ensures applications receive traffic only when fully ready.
+
+**Q. What is Service Discovery in Kubernetes?**
+
+Service discovery in kubernetes is the mechanism by which applications automatically detect and communicate with other services within a cluster. Since pods in Kubernetes are ephemeral and their IPs changes frequentely. Service discivery ensures that applications can dynamically locate and interact with servies without requiring manul configuration.
+
+Kubernetes provides two primary ways to discover services.
+
+1. DNS-Based Service Discovery
+2. environment variable-based discovery
+
+The most common method is DNS-based discovery, where Kubernetes uses CoreDNS (or Kube-DNS) to resolve service names into stable, internal cluster IPs. Each service in Kubernetes is automatically assigned a DNS name in the format <service-name>.<namespace>.svc.cluster.local, allowing applications to reference other services using human-readable names instead of IP addresses. 
+
+For example, a frontend application can connect to a backend service using _http://backend.default.svc.cluster.local_
+
+Another approach is environment variable-based discovery, where Kubernetes **injects environment variables** into each Pod, containing service details such as IP and port. However, this method is static and only works for services created before the Pod starts.
+
+For example, a database service may have environment variables like DATABASE_SERVICE_HOST=10.0.0.5 and DATABASE_SERVICE_PORT=5432, which an application can use to establish a connection
+
