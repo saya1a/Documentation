@@ -53,7 +53,7 @@ This behavior applies only when the restart policy is set to Always (the default
 *****************
 I have used Prometheus and grafana, alert manager with node exporter plugin. The setup is already there, suppose let say some new applications comes are some modifications are needed we do the configuration changes. But the alerts and the SMPTP setings everything slack settings already there. 
 *****
-Q. Do you know, implementation of prometheus amd grafana form scratch?
+**Q. Do you know, implementation of prometheus amd grafana form scratch?**
 *******
 Yes, I have experience implementing Alertmanager with Prometheus and Grafana from scratch. I can set up Prometheus for monitoring, configure Alertmanager for notifications, and integrate it with Grafana for visualization.
 
@@ -162,7 +162,7 @@ Kubernetes provides two primary ways to discover services.
 1. DNS-Based Service Discovery
 2. environment variable-based discovery
 
-The most common method is DNS-based discovery, where Kubernetes uses CoreDNS (or Kube-DNS) to resolve service names into stable, internal cluster IPs. Each service in Kubernetes is automatically assigned a DNS name in the format <service-name>.<namespace>.svc.cluster.local, allowing applications to reference other services using human-readable names instead of IP addresses. 
+The most common method is DNS-based discovery, where Kubernetes uses CoreDNS (or Kube-DNS) to resolve service names into stable, internal cluster IPs. Each service in Kubernetes is automatically assigned a DNS name in the format _servicename.namespace.svc.cluster.local_, allowing applications to reference other services using human-readable names instead of IP addresses. 
 
 For example, a frontend application can connect to a backend service using _http://backend.default.svc.cluster.local_
 
