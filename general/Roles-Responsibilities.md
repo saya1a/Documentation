@@ -1,0 +1,13 @@
+**Q. Explain your roles and Responsibilities.**
+
+I am currently working on the Aircargo Project, which consists of 15 to 20 microservices responsible for critical functionalities such as user authentication (log-in), financial transactions, booking, and real-time shipment tracking. These services are developed using Java and Go to ensure high performance and scalability.
+
+As a DevOps Engineer, I support multiple development teams by managing and optimizing their workflows, ensuring seamless software development, deployment, and operations. My role spans the entire Software Development Life Cycle (SDLC), where I actively contribute to building new CI/CD pipelines from scratch, optimizing and modifying existing pipelines, and automating integration, testing, and deployment processes. These optimizations help to improve reliability, minimize manual interventions, and reduce deployment errors, ensuring that new code changes reach production efficiently and securely.
+
+Our project’s target environment is Kubernetes, and we deploy our microservices on Amazon EKS (Elastic Kubernetes Service). I closely collaborate with development teams to facilitate smooth deployments by writing and maintaining Kubernetes manifest files, Helm charts, and configuring auto-scaling mechanisms to ensure optimal resource utilization. By implementing horizontal and vertical auto-scaling, I help enhance application performance and maintain cost-efficiency.
+
+In addition to deployment automation, I am responsible for Infrastructure as Code (IaC) implementation using Terraform. This involves provisioning cloud resources on AWS based on client requirements, ensuring that infrastructure is scalable, repeatable, and easily manageable.
+
+A key aspect of my role includes Docker optimization, where I work on reducing image sizes, improving the build process, and enhancing deployment efficiency. By implementing multi-stage builds and minimizing unnecessary dependencies, I ensure that containerized applications remain lightweight and performant while reducing security vulnerabilities.
+
+Monitoring and observability are critical components of my responsibilities. I oversee the QA and production-like environments, implementing proactive alerting mechanisms to detect potential issues such as high resource utilization, slow response times, or application failures before they impact end users. Additionally, I am responsible for onboarding new services into our monitoring infrastructure, configuring Prometheus to scrape application metrics, and developing comprehensive Grafana dashboards for real-time visualization of system performance and health
