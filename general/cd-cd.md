@@ -1,4 +1,4 @@
-**Q. Explain your pipeline in your project**
+**Q. Explain Pipeline in your project**
 
 In our DevOps workflow, we utilize GitHub as the source code repository to manage and version-control our applications, while Kubernetes serves as the target deployment platform. Our CI/CD pipeline, orchestrated using Jenkins, ensures a fully automated software delivery process, from code commit to deployment. When a developer pushes code to GitHub, a Git webhook triggers the Jenkins pipeline, initiating the continuous integration process. The first step involves checking out the latest code, followed by building the application using tools like Maven for Java-based services. During this stage, unit tests are executed using frameworks such as JUnit or TestNG, ensuring that newly introduced changes do not break the existing functionality.
 
